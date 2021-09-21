@@ -293,7 +293,7 @@ class ManageOrgUsers extends React.Component {
                                     })}
                                     value={user.role}
                                     search={false}
-                                    disabled={idChangingRole === user.id}
+                                    disabled={idChangingRole === user.id || currentUser.role != 'admin'}
                                     onChange={(value) => {
                                       this.changeNewUserRole(user.id, value);
                                     }}
