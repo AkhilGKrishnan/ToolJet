@@ -111,8 +111,9 @@ class ManageOrgUsers extends React.Component {
     toast.info('Invitation URL copied', { hideProgressBar: true, position: 'bottom-right' });
   };
 
+
   render() {
-    const { isLoading, showNewUserForm, creatingUser, users, newUser, idChangingRole, archivingUser } = this.state;
+    const { currentUser, isLoading, showNewUserForm, creatingUser, users, newUser, idChangingRole, archivingUser } = this.state;
     return (
       <div className="wrapper org-users-page">
         <Header switchDarkMode={this.props.switchDarkMode} darkMode={this.props.darkMode} />
@@ -126,7 +127,7 @@ class ManageOrgUsers extends React.Component {
                   <h2 className="page-title">Users & Permissions</h2>
                 </div>
                 <div className="col-auto ms-auto d-print-none">
-                  {!showNewUserForm && (
+                  {!showNewUserForm && currentUser.role === 'admin' && (
                     <div className="btn btn-primary" onClick={() => this.setState({ showNewUserForm: true })}>
                       Invite new user
                     </div>
